@@ -13,25 +13,62 @@
   </head>
 
   <body>
-    <header class="headerDiary bg-primary text-white p-3">
-      <!-- blue bg white text padding 3 -->
-      <div class="container">
-        <h2>Welcome to GitDiary</h2>
+    <header class="headerDiary white-primary text-black p-1 mt-3">
+      <!-- black bg black text padding 3 -->
+      <div class="container d-flex align-items-center justify-content-between">
+        <h2 class="fw-light fs-0">Welcome to GitDiary</h2>
         <nav class="nav">
-          <a class="nav-link text-white" href="index.html">Home</a>
-          <!-- nav link styled and white text -->
-          <a class="nav-link text-white" href="new-entry.html">New Entry</a>
-          <a class="nav-link text-white" href="view-entry.html">View Entries</a>
+          <a class="nav-link text-black" href="index.html">Home</a>
+          <!-- nav link styled and black text -->
+          <a class="nav-link text-black" href="new-entry.html">New Entry</a>
+          <a class="nav-link text-black" href="view-entry.html">View Entries</a>
         </nav>
       </div>
     </header>
 
-    <footer class="footerDiary bg-dark text-white text-center p-3 mt-5"> 
-        <p>&copy; 2025 GitDiary - Your Daily Coding Journal</p>
-    </footer>
+    <div class="formBody border m-5 p-4 auto rounded w-75 mx-auto">
+      <h1 class="fw-light pt-2 mt-1 text-start ms-3 mb-5">
+        Create new Diary Entry
+      </h1>
+
+      <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input
+          type="text"
+          placeholder="Give your entry a title.. "
+          class="border-1 rounded-3 p-3 form-control"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Date</label>
+        <input
+          type="text"
+          placeholder="What day is today?"
+          class="border-1 rounded-3 form-control p-3"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Your thoughts</label>
+        <textarea
+          class="border rounded-3 form-control"
+          rows="12"
+          placeholder="What's on your mind today?"
+        ></textarea>
+
+        <input
+          type="image"
+          class="img-fluid mb-3 border mt-3 fs-5"
+          alt="Attach Image"
+        />
+      </div>
+      <button class="btn btn-primary">Submit Entry</button>
+      <button class="btn btn-secondary">Cancel</button>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- Your Custom JS -->
     <script src="assets/js/app.js"></script>
     <script src="assets/js/entries.js"></script>
