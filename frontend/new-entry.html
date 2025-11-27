@@ -36,31 +36,35 @@
         <input
           type="text"
           placeholder="Give your entry a title.. "
-          class="border-1 rounded-3 p-3 form-control"
+          class="jsTitleUserInput border-1 rounded-3 p-3 form-control"
+          required
         />
       </div>
 
       <div class="mb-3">
         <label class="form-label">Date</label>
         <input
-          type="text"
-          placeholder="What day is today?"
-          class="border-1 rounded-3 form-control p-3"
+          type="date"
+          class="jsDateUserInput border-1 rounded-3 form-control p-3"
+          required
         />
       </div>
 
       <div class="mb-3">
         <label class="form-label">Your thoughts</label>
         <textarea
-          class="border rounded-3 form-control"
+          class="jsContentUserInput border rounded-3 form-control"
           rows="12"
           placeholder="What's on your mind today?"
+          required
         ></textarea>
       </div>
 
       <!-- File Upload Dropzone -->
-      <div class="mb-3 w-50 mx-auto text-center">
-        <label class="form-label d-block mb-2 fw-lighter">Attach Image</label>
+      <div class="jsImageUserInput mb-3 w-50 mx-auto text-center">
+        <label class="form-label d-block mb-2 fw-lighter"
+          >Attach Image (Optional)</label
+        >
 
         <div
           class="dropzone position-relative border rounded-2 p-4 d-flex flex-column align-items-center justify-content-center"
@@ -87,7 +91,9 @@
       </div>
 
       <div class="text-center">
-        <button class="btn btn-primary border w-25 mx-auto rounded-3 p-3">
+        <button
+          class="jsButtonSubmitEntry btn btn-primary border w-25 mx-auto rounded-3 p-3"
+        >
           Submit Entry
         </button>
         <button class="btn btn-secondary border w-25 mx-auto rounded-3 p-3">
