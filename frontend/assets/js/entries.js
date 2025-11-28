@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const buttonSelector = document.querySelector(".newEntriesBtn");
   if (buttonSelector) {
     buttonSelector.addEventListener("click", () => {
-      window.location.href = "new-entry.html";
+      window.location.href = "view-entry.html"; 
     });
   }
   const submitEntryButton = document.querySelector(".jsButtonSubmitEntry");
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         title: title,
         content: content,
         date: date,
-        image: image ? image : null, // if image then image as value else null
+        image: image ? image : null,
       };
 
       console.log(entryData);
@@ -50,19 +50,37 @@ document.addEventListener("DOMContentLoaded", () => {
   if (entriesContainer) {
     const entries = JSON.parse(localStorage.getItem("entries")) || [];
 
+    const currentPage = window.location.pathname;
+    const isViewEntryPage = currentPage.includes("view-entry.html");
+
     let entriesContainerHTML = "";
     entries.forEach((entryData) => {
-      entriesContainerHTML += `
-  <div class="entryCard border p-3 rounded mt-4 w-75 mx-auto">
-        <h3 class="fw-semibold">${entryData.title}</h3>
-        <span class="text-gray-500">${entryData.date}</span>
+      if (isViewEntryPage) {
+        entriesContainerHTML += `
+  // <div class="entryCard border p-3 rounded mt-4 w-75 mx-auto">
+   <div class="d-flex justify-content-between align-items-center">       
+  <h3 class="fw-semibold">${entryData.title}</h3>
+        <a href="#" class="text-end text-decoration-none">
+              Read more &rightarrow;
+        </a>
+        </div>
+        <span class="text-gray-500 fw-normal text-muted">${entryData.date}</span>
         <p class="mt-3 text-gray-600">
           ${entryData.content}
-          GitDiary application. Here you can read your past thoughts and
-          reflections.
         </p>
       </div>
 `;
+      } else {
+        entriesContainerHTML += `
+          <div class="entryCard border p-3 rounded mt-4 w-75 mx-auto">
+            <h3 class="fw-semibold">${entryData.title}</h3>
+            <span class="text-gray-500">${entryData.date}</span>
+            <p class="mt-3 text-gray-600">
+              ${entryData.content}
+            </p>
+          </div>
+        `;
+      }
     });
     entriesContainer.innerHTML = entriesContainerHTML;
   }

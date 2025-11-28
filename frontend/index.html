@@ -31,51 +31,28 @@
 
     <main class="container my-5 text-center">
       <div class="pb-4 p-5 mb-5 border">
-        <h1 class="mb-3 fw-semibold fs-1">How is your day going?</h1> 
+        <h1 class="mb-3 fw-semibold fs-1">How is your day going?</h1>
         <p class="text-gray-600 fs-5">
           Write your thoughts. Track your growth. Reflect anytime
         </p>
         <button
-          class=" newEntriesBtn bg-primary text-white p-2 border-0 rounded"
+          class="newEntriesBtn bg-primary text-white p-2 border-0 rounded"
           href="new-entry.html"
         >
           Write a New Entry
         </button>
       </div>
+      <div class="d-flex justify-content-between mb-4 align-items-center">
+        <h1 class="fw-light m-0">Recent Entries</h1>
+        <a href="view-entry.html" class="text-decoration-none"
+          >View All Entries &rightarrow;
+        </a>
+      </div>
 
       <div class="entriesContainer">
-        <div id="entries-grid" class="row">
-          <h1 class="text-start mb-5 fw-light">Recent Entries</h1>
-          <!-- Entries will load here via JavaScript -->
-          <div class="entriesCard d-flex">
-            <div class="infoCard text-start border p-11 rounded me-4">
-              <h3>Sample Entry Title</h3>
-              <p class="text-gray-600">
-                This is a sample entry to demonstrate the layout of an entry
-                card in the GitDiary application.
-              </p>
-              <span class="text-gray-500">2024-06-15</span>
-            </div>
+        <div id="entries-grid" class="row"></div>
 
-            <div class="infoCard text-start border p-11 rounded me-4">
-              <h3>Sample Entry Title</h3>
-              <p class="text-gray-600">
-                This is a sample entry to demonstrate the layout of an entry
-                card in the GitDiary application.
-              </p>
-              <span class="text-gray-500">2024-06-15</span>
-            </div>
-
-            <div class="infoCard text-start border p-11 rounded me-4">
-              <h3>Sample Entry Title</h3>
-              <p class="text-gray-600">
-                This is a sample entry to demonstrate the layout of an entry
-                card in the GitDiary application.
-              </p>
-              <span class="text-gray-500">2024-06-15</span>
-            </div>
-          </div>
-        </div>
+        <!-- entries is replaced by dynamic string literal-->
       </div>
     </main>
 
