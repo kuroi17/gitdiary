@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const buttonSelector = document.querySelector(".newEntriesBtn");
   if (buttonSelector) {
     buttonSelector.addEventListener("click", () => {
-      window.location.href = "view-entry.html"; 
+      window.location.href = "new-entry.html";
     });
   }
   const submitEntryButton = document.querySelector(".jsButtonSubmitEntry");
@@ -30,11 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // entryData will only be saved in local storage if it is in string format
-
       // retrieve existing entries from local storage or initialize an empty array
       let entries = JSON.parse(localStorage.getItem("entries")) || [];
-      // add the new entry to the entries array
+      // add the new entry to the existing entries array(entryData)
       entries.push(entryData);
       // save the updated entries array back to local storage
       localStorage.setItem("entries", JSON.stringify(entries));
@@ -45,43 +43,50 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const entriesContainer = document.querySelector(".entriesContainer");
 
-  if (entriesContainer) {
-    const entries = JSON.parse(localStorage.getItem("entries")) || [];
-
+// use the id entries-grid to instead of class entriesContainer to render entries 
+  const entriesGrid = document.getElementById("entries-grid");
+  if (entriesGrid) {
+    entries = JSON.parse(localStorage.getItem("entries")) || [];
     const currentPage = window.location.pathname;
     const isViewEntryPage = currentPage.includes("view-entry.html");
 
-    let entriesContainerHTML = "";
+    let entriesGridHTML = "";
+
+    // array.forEach(array)
     entries.forEach((entryData) => {
+      // if view-entry.html
       if (isViewEntryPage) {
-        entriesContainerHTML += `
-  // <div class="entryCard border p-3 rounded mt-4 w-75 mx-auto">
+        entriesGridHTML += `
+   <div class="entryCard card border p-3 rounded mt-4 mx-auto w-75">
    <div class="d-flex justify-content-between align-items-center">       
-  <h3 class="fw-semibold">${entryData.title}</h3>
+  <h3 class="fw-normal">${entryData.title}</h3>
         <a href="#" class="text-end text-decoration-none">
               Read more &rightarrow;
         </a>
         </div>
-        <span class="text-gray-500 fw-normal text-muted">${entryData.date}</span>
-        <p class="mt-3 text-gray-600">
+        <span class="fw-normal text-muted">${entryData.date}</span>
+        <p class="text-secondary mt-3 text-gray-600">
           ${entryData.content}
         </p>
       </div>
 `;
       } else {
-        entriesContainerHTML += `
-          <div class="entryCard border p-3 rounded mt-4 w-75 mx-auto">
-            <h3 class="fw-semibold">${entryData.title}</h3>
+        // index.html
+        entriesGridHTML += `
+        <div class="col-md-4 mb-3">
+          <div class="entryCard card border p-3 rounded mt-4  ">
+            <h3 class="fw-normal">${entryData.title}</h3>
             <span class="text-gray-500">${entryData.date}</span>
             <p class="mt-3 text-gray-600">
               ${entryData.content}
-            </p>
+            </p>  
+          </div>
           </div>
         `;
       }
     });
-    entriesContainer.innerHTML = entriesContainerHTML;
+
+    entriesGrid.innerHTML = entriesGridHTML;
   }
 });
