@@ -1,0 +1,34 @@
+/* view-EntryDetail */
+.entry-card {
+    height: 400px;               
+    padding: 3rem 3.5rem;        
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.entry-title {
+    font-size: 2.3rem;
+    font-weight: 300;
+    margin-bottom: 0.3rem;
+}
+
+
+.entry-date {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+
+.entry-text {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    flex-grow: 1;      /* makes the body expand and center nicely */
+}
+
+/* Buttons container */
+.entry-buttons {
+    margin-top: 1.5rem;
+}

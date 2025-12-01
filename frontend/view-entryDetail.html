@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
-    <header class="headerDiary white-primary text-black p-1 mt-3 mb-5">
+    <header class="headerDiary white-primary text-black p-1 mt-3">
       <!-- black bg black text padding 3 -->
       <div class="container d-flex align-items-center justify-content-between">
         <h2 class="fw-light fs-0">Welcome to GitDiary</h2>
@@ -20,24 +20,33 @@
           <a class="nav-link text-black" href="index.html">Home</a>
           <!-- nav link styled and black text -->
           <a class="nav-link text-black" href="new-entry.html">New Entry</a>
-          <a class="nav-link text-black" href="view-entry.html">View Entries</a>
+          <a class="nav-link text-black" href="view-entry.html">View </a>
         </nav>
       </div>
     </header>
 
-    <div class="ViewEntryBody border rounded w-75 mx-auto p-4">
-      <h1 class="text-start fw-light mb-4 p-0">Your Entries</h1>
-      <div class="border rounded-1">
-        <input
-          type="text"
-          placeholder="Find entries"
-          class="border rounded-2 p-2 w-100"
-        />
-      </div>
-    </div>
-    <div class="entriesContainer mb-5">
-      <div id="entries-grid" class="row"></div>
-      <!-- entries is replaced by js dynamic literal string-->
+    <div class="containerFormDetail container my-5 w-75">
+      <a href="view-entry.html" class="text-decoration-none mb-4 d-inline-block"
+        >← Back to Entries</a
+      >
+
+      <article id="entryDetails" class="entry-card border rounded mb-4 mt-4">
+        <h1 class="entry-title">A beautiful morning</h1>
+
+        <span class="entry-date text-muted">2024-06-15</span>
+
+        <p class="entry-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
+          pariatur optio sunt consectetur similique accusantium nesciunt earum
+          exercitationem et non laborum neque vitae tempora corrupti, placeat
+          aperiam ab laudantium amet?
+        </p>
+
+        <div class="entry-buttons">
+          <button class="btn btn-primary btn-lg px-4">Edit</button>
+          <button class="btn btn-secondary btn-lg px-4">Delete</button>
+        </div>
+      </article>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

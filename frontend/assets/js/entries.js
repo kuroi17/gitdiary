@@ -43,8 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-
-// use the id entries-grid to instead of class entriesContainer to render entries 
+  // use the id entries-grid to instead of class entriesContainer to render entries
   const entriesGrid = document.getElementById("entries-grid");
   if (entriesGrid) {
     entries = JSON.parse(localStorage.getItem("entries")) || [];
@@ -61,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
    <div class="entryCard card border p-3 rounded mt-4 mx-auto w-75">
    <div class="d-flex justify-content-between align-items-center">       
   <h3 class="fw-normal">${entryData.title}</h3>
-        <a href="#" class="text-end text-decoration-none">
+        <a href="view-entryDetail.html" class="readmoreLink text-end text-decoration-none" >
               Read more &rightarrow;
         </a>
         </div>
