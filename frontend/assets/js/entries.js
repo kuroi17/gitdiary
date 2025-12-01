@@ -53,14 +53,14 @@ document.addEventListener("DOMContentLoaded", () => {
     let entriesGridHTML = "";
 
     // array.forEach(array)
-    entries.forEach((entryData) => {
+    entries.forEach((entryData, index) => {
       // if view-entry.html
       if (isViewEntryPage) {
         entriesGridHTML += `
    <div class="entryCard card border p-3 rounded mt-4 mx-auto w-75">
    <div class="d-flex justify-content-between align-items-center">       
   <h3 class="fw-normal">${entryData.title}</h3>
-        <a href="view-entryDetail.html" class="readmoreLink text-end text-decoration-none" >
+        <a href="view-entryDetail.html?index=${index}" class="readmoreLink text-end text-decoration-none" >
               Read more &rightarrow;
         </a>
         </div>
@@ -87,5 +87,48 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     entriesGrid.innerHTML = entriesGridHTML;
+  }
+  // for entryDetails cardPage
+  const entryDetails = document.getElementById("entryDetails");
+
+  if (entryDetails) {
+    // is a built-in JavaScript interface used to work with URL query strings — the part after the ? in a URL.
+    const urlParams = new URLSearchParams(window.location.search);
+    // this gets the value of the index parameter from the URL query string
+    const entryIndex = urlParams.get("index");
+
+    if (entryIndex !== null) {
+      // retrieve entries from local storage or initialize an empty array
+      const entries = JSON.parse(localStorage.getItem("entries")) || [];
+      // this gets the entryData from the entryindex of the array "entries"
+      const entryData = entries[entryIndex];
+
+      let entryDetailsHTML = "";
+      if (entryData) {
+        entryDetailsHTML = `<article id="entryDetails" class="entry-card border rounded mb-4 mt-4">
+        <h1 class="entry-title">${entryData.title}</h1>
+    
+        <span class="entry-date text-muted">${entryData.date}</span>
+
+        <p class="entry-text">
+          ${entryData.content}
+        </p>
+         ${
+           entryData.image
+             ? `<img src="${entryData.image}" alt="${entryData.title}" class="img-fluid mb-3">`
+             : ""
+         }
+
+        <div class="entry-buttons">
+          <button class="btn btn-primary btn-lg px-4">Edit</button>
+          <button class="btn btn-secondary btn-lg px-4">Delete</button>
+        </div>
+      </article>
+      `;
+        entryDetails.innerHTML = entryDetailsHTML;
+      } else {
+        entryDetails.innerHTML = "<p>Entry not found.</p>";
+      }
+    }
   }
 });
