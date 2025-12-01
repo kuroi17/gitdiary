@@ -60,6 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
    <div class="entryCard card border p-3 rounded mt-4 mx-auto w-75">
    <div class="d-flex justify-content-between align-items-center">       
   <h3 class="fw-normal">${entryData.title}</h3>
+  <!-- Link to view-entryDetail.html with index as query parameter -->
+
         <a href="view-entryDetail.html?index=${index}" class="readmoreLink text-end text-decoration-none" >
               Read more &rightarrow;
         </a>
@@ -120,12 +122,69 @@ document.addEventListener("DOMContentLoaded", () => {
          }
 
         <div class="entry-buttons">
-          <button class="btn btn-primary btn-lg px-4">Edit</button>
-          <button class="btn btn-secondary btn-lg px-4">Delete</button>
+          <button class="editButton btn btn-primary btn-lg px-4">Edit</button>
+          <button class="deleteButton btn btn-secondary btn-lg px-4">Delete</button>
         </div>
       </article>
       `;
         entryDetails.innerHTML = entryDetailsHTML;
+
+        //functionality for EDIT button
+        const editButton = document.querySelector(".editButton");
+        const deleteButton = document.querySelector(".deleteButton");
+        if (editButton) {
+          editButton.addEventListener("click", () => {
+            const newTitle = prompt("Enter new title:");
+            const newContent = prompt("Enter new content: ");
+
+            if (newTitle || newContent) {
+              // retrieve url parameters from window.location.search
+              const urlParams = new URLSearchParams(window.location.search);
+
+              // get the index parameter from the url
+              const entryIndex = urlParams.get("index");
+
+              // retrieve existing entries from local storage or initialize an empty array
+              let entries = JSON.parse(localStorage.getItem("entries")) || [];
+              // get the entryData at the specified index of array "entries"
+              let entryData = entries[entryIndex];
+
+              if (entryData) {
+                // if newTitle or newContent, update entryData.content || entryData.title
+                if (newTitle) entryData.title = newTitle;
+                if (newContent) entryData.content = newContent;
+
+                // equate the updated entryData back to entries array at entryIndex
+                entries[entryIndex] = entryData;
+                // save the updated entries array back to local storage using JSON.stringify
+                localStorage.setItem("entries", JSON.stringify(entries));
+                alert("Entry updated successfully!");
+                window.location.reload();
+              }
+            }
+          });
+        }
+        if (deleteButton) {
+          deleteButton.addEventListener("click", () => {
+            const confirmDelete = confirm(
+              "Are you sure you want to delete this entry?"
+            );
+            if (confirmDelete) {
+              // retrieve url parameters from window.location.search
+              const urlParams = new URLSearchParams(window.location.search);
+              // get the index parameter from the url
+              const entryIndex = urlParams.get("index");
+              // retrieve existing entries from local storage or initialize an empty array
+              let entries = JSON.parse(localStorage.getItem("entries")) || [];
+              // remove the entry at the specified index using splice
+              entries.splice(entryIndex, 1);
+              // save the updated entries array back to local storage
+              localStorage.setItem("entries", JSON.stringify(entries));
+              alert("Entry deleted successfully!");
+              window.location.href = "view-entry.html"; // redirect to entries page
+            }
+          });
+        }
       } else {
         entryDetails.innerHTML = "<p>Entry not found.</p>";
       }
