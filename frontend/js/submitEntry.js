@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Call the async function to submit the entry
         // use relative path since we're on same server
         const response = await fetch(
-          "/backend/submitEntry.php",
+          "http://localhost/gitdiary/backend/submitEntry.php",
           {
             method: "POST", // POST method is used to send data to the server
             headers: {
@@ -53,6 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Error submitting entry:", error);
         alert("An error occurred while submitting the entry.");
       }
+
+      window.location.href = "index.html";
     });
+   
   }
+   
 });
