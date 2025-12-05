@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
+
   const entryDetails = document.getElementById("entryDetails");
 
   if (entryDetails) {
@@ -7,7 +8,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     // this gets the value of the index parameter from the URL query string
     const entryIndex = urlParams.get("index");
 
-    if (entryIndex !== null) {
+    if (entryIndex !== null) {  
+
       let entryData;
       try {
         const response = await fetch(
@@ -26,25 +28,19 @@ document.addEventListener("DOMContentLoaded", async () => {
       let entryDetailsHTML = "";
       if (entryData) {
         entryDetailsHTML = `<article id="entryDetails" class="entry-card border rounded mb-4 mt-4">
-        <h1 class="entry-title">${entryData.title}</h1>
-    
-        <span class="entry-date text-muted">${entryData.date}</span>
-
-        <p class="entry-text">
-          ${entryData.content}
-        </p>
-         ${
-           entryData.image
-             ? `<img src="${entryData.image}" alt="${entryData.title}" class="img-fluid mb-3">`
-             : ""
-         }
-
-        <div class="entry-buttons">
-          <button class="editButton btn btn-primary btn-lg px-4">Edit</button>
-          <button class="deleteButton btn btn-secondary btn-lg px-4">Delete</button>
-        </div>
-      </article>
-      `;
+          <h1 class="entry-title">${entryData.title}</h1>
+          <span class="entry-date text-muted">${entryData.date}</span>
+          <p class="entry-text">${entryData.content}</p>
+          ${
+            entryData.image
+              ? `<img src="${entryData.image}" alt="${entryData.title}" class="img-fluid mb-3">`
+              : ""
+          }
+          <div class="entry-buttons">
+            <button class="editButton btn btn-primary btn-lg px-4">Edit</button>
+            <button class="deleteButton btn btn-secondary btn-lg px-4">Delete</button>
+          </div>
+        </article>`;
         entryDetails.innerHTML = entryDetailsHTML;
 
         const editButton = document.querySelector(".editButton");
@@ -66,7 +62,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               try {
                 const result = await fetch(
                   "http://localhost/gitdiary/backend/updateandDelete.php",
-                  {
+                  { 
                     method: "POST",
                     headers: {
                       "Content-Type": "application/json",
@@ -77,7 +73,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const response = await result.json();
                 alert(response.message);
                 window.location.reload();
-              } catch (error) {
+              } catch(error) {
                 alert("Error updating entry: " + error.message);
                 return;
               }
@@ -85,6 +81,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           });
         }
 
+        //functionality for DELETE button
         if (deleteButton) {
           deleteButton.addEventListener("click", async () => {
             const confirmDelete = confirm(
@@ -93,7 +90,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (confirmDelete) {
               try {
                 const result = await fetch(
-                  "http://localhost/gitdiary/backend/updateandDelete.php",
+                  "http://localhost/gitdiary/backend/updateandDelete.php", 
                   {
                     method: "POST",
                     headers: {
@@ -107,16 +104,19 @@ document.addEventListener("DOMContentLoaded", async () => {
                 );
                 const response = await result.json();
                 alert(response.message);
-              } catch (error) {
-                alert("Error updating entry: " + error.message);
+                window.location.href = "view-entry.html";
+              } catch(error) {
+                alert("Error deleting entry: " + error.message);
                 return;
               }
             }
           });
         }
+
       } else {
         entryDetails.innerHTML = "<p>Entry not found.</p>";
       }
     }
   }
+
 });
