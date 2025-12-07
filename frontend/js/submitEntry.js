@@ -9,10 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const image = document.querySelector(".jsImageUserInput").value;
 
       const entryData = {
-        entryTitle: title,
-        entryContent: content,
-        entryDate: date,
-        entryImage: image ? image : null,
+        title: title,
+        content: content,
+        date: date,
+        image: image ? image : null,
       };
 
       console.log(entryData);

@@ -33,10 +33,10 @@ if(!isset($entryData['title']) || !isset($entryData['content'])){
     exit;
 }
 
-$title = $entryData["entryTitle"];
-$content = $entryData["entryContent"];
-$date = $entryData["entryDate"] ?? date('Y-m-d H:i:s');
-$image = $entryData["entryImage"] ?? null;
+$title = $entryData["title"];
+$content = $entryData["content"];
+$date = $entryData["date"] ?? date('Y-m-d H:i:s', time());
+$image = $entryData["image"] ?? null;
 
 // insert entry into database
 $stmt = $conn->prepare("INSERT INTO entries (entryTitle, entryContent, createdAt) VALUES (?, ?, ?)");
