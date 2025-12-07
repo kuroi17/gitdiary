@@ -42,16 +42,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         entriesGridHTML += `
    <div class="entryCard card border p-3 rounded mt-4 mx-auto w-75">
    <div class="d-flex justify-content-between align-items-center">       
-  <h3 class="fw-normal">${entryData.title}</h3>
+  <h3 class="fw-normal">${entryData.entryTitle}</h3>
   <!-- Link to view-entryDetail.html with index as query parameter -->
 
-        <a href="view-entryDetail.html?index=${entryData.id}" class="readmoreLink text-end text-decoration-none" >
+        <a href="view-entryDetail.html?index=${entryData.entryNumber}" class="readmoreLink text-end text-decoration-none" >
               Read more &rightarrow;
         </a>
         </div>
-        <span class="fw-normal text-muted">${entryData.date}</span>
+        <span class="fw-normal text-muted">${entryData.createdAt}</span>
         <p class="text-secondary mt-3 text-gray-600">
-          ${entryData.content.substring(0, 100)}...
+          ${entryData.entryContent.substring(0, 100)}...
         </p>
       </div>
 `;
@@ -61,10 +61,10 @@ document.addEventListener("DOMContentLoaded", async () => {
           entriesGridHTML += `
         <div class="col-md-4 mb-3">
           <div class="entryCard card border p-3 rounded mt-4  ">
-            <h3 class="fw-normal">${entryData.title}</h3>
-            <span class="text-gray-500">${entryData.date}</span>
+            <h3 class="fw-normal">${entryData.entryTitle}</h3>
+            <span class="text-gray-500">${entryData.createdAt}</span>
             <p class="mt-3 text-gray-600">
-              ${entryData.content.substring(0, 100)}...
+              ${entryData.entryContent.substring(0, 100)}...
             </p>  
           </div>
           </div>

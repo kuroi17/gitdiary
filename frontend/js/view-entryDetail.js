@@ -26,16 +26,16 @@ document.addEventListener("DOMContentLoaded", async () => {
       let entryDetailsHTML = "";
       if (entryData) {
         entryDetailsHTML = `<article id="entryDetails" class="entry-card border rounded mb-4 mt-4">
-        <h1 class="entry-title">${entryData.title}</h1>
+        <h1 class="entry-title">${entryData.entryTitle}</h1>
     
-        <span class="entry-date text-muted">${entryData.date}</span>
+        <span class="entry-date text-muted">${entryData.createdAt}</span>
 
         <p class="entry-text">
-          ${entryData.content}
+          ${entryData.entryContent}
         </p>
          ${
-           entryData.image
-             ? `<img src="${entryData.image}" alt="${entryData.title}" class="img-fluid mb-3">`
+           entryData.entryImage
+             ? `<img src="${entryData.entryImage}" alt="${entryData.entryTitle}" class="img-fluid mb-3">`
              : ""
          }
 
@@ -59,8 +59,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (newTitle || newContent) {
               const newEntryData = {
                 action: "update",
-                title: newTitle ? newTitle : entryData.title,
-                content: newContent ? newContent : entryData.content,
+                title: newTitle ? newTitle : entryData.entryTitle,
+                content: newContent ? newContent : entryData.entryContent,
                 id: entryIndex,
               };
               try {
