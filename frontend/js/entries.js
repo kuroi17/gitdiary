@@ -92,11 +92,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                 entry.entryTitle.toLowerCase().includes(inputEntry) ||
                 entry.entryContent.toLowerCase().includes(inputEntry)
             );
-            //  window.location.reload();
-            renderEntries(filteredEntries);
+            // If no entries found, show a message
+            if (filteredEntries.length === 0) {
+              entriesGrid.innerHTML = `<p class="text-center mt-4">No entries found.</p>`;
+            } else {
+              renderEntries(filteredEntries);
+            }
           }
         });
-      } 
+      }
     }
   }
 });
