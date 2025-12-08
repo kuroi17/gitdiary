@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       entries = await response.json();
-       console.log("Entries from database:", entries);
+      console.log("Entries from database:", entries);
     } catch (error) {
       console.log("Error submitting entry:", error);
       return;
@@ -33,19 +33,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     const currentPage = window.location.pathname;
     const isViewEntryPage = currentPage.includes("view-entry.html");
 
-    let entriesGridHTML = "";
-
-    // array.forEach(array)
-    entries.forEach((entryData, index) => {
-      // if view-entry.html
-      if (isViewEntryPage) {
-        entriesGridHTML += `
+    function renderEntries(entriesToShow) {
+      let entriesGridHTML = "";
+      // array.forEach(array)
+      entriesToShow.forEach((entryData, index) => {
+        // if view-entry.html
+        if (isViewEntryPage) {
+          entriesGridHTML += `
    <div class="entryCard card border p-3 rounded mt-4 mx-auto w-75">
    <div class="d-flex justify-content-between align-items-center">       
   <h3 class="fw-normal">${entryData.entryTitle}</h3>
   <!-- Link to view-entryDetail.html with index as query parameter -->
 
-        <a href="view-entryDetail.html?index=${entryData.entryNumber}" class="readmoreLink text-end text-decoration-none" >
+        <a href="view-entryDetail.html?index=${
+          entryData.entryNumber
+        }" class="readmoreLink text-end text-decoration-none" >
               Read more &rightarrow;
         </a>
         </div>
@@ -55,10 +57,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         </p>
       </div>
 `;
-      } else {
-        // index.html
-        if (index < 3){
-          entriesGridHTML += `
+        } else {
+          // index.html
+          if (index < 3) {
+            entriesGridHTML += `
         <div class="col-md-4 mb-3">
           <div class="entryCard card border p-3 rounded mt-4  ">
             <h3 class="fw-normal">${entryData.entryTitle}</h3>
@@ -69,10 +71,32 @@ document.addEventListener("DOMContentLoaded", async () => {
           </div>
           </div>
         `;
+          }
         }
-      }
-    });
+      });
 
-    entriesGrid.innerHTML = entriesGridHTML;
+      entriesGrid.innerHTML = entriesGridHTML;
+    }
+
+    renderEntries(entries);
+
+    if (isViewEntryPage) {
+      const searchEntry = document.getElementById("jsEntryInputSearch");
+      if (searchEntry) {
+        searchEntry.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") {
+            const inputEntry = searchEntry.value.toLowerCase();
+
+            const filteredEntries = entries.filter(
+              (entry) =>
+                entry.entryTitle.toLowerCase().includes(inputEntry) ||
+                entry.entryContent.toLowerCase().includes(inputEntry)
+            );
+            //  window.location.reload();
+            renderEntries(filteredEntries);
+          }
+        });
+      } 
+    }
   }
 });
