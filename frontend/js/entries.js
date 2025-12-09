@@ -39,10 +39,31 @@ document.addEventListener("DOMContentLoaded", async () => {
       entriesToShow.forEach((entryData, index) => {
         // if view-entry.html
         if (isViewEntryPage) {
+          let mediaUrl = "";
+          // If entryMedia exists
+          if (entryData.entryMedia) {
+            if (entryData.entryMedia.startsWith("http")) {
+              mediaUrl = entryData.entryMedia; //backend/uploads/filename.png.
+            } else {
+              mediaUrl = `http://localhost/gitdiary/${entryData.entryMedia}
+              `;
+              //http://localhost/gitdiary/backend/uploads/filename
+            }
+          } else {
+            // If entryMedia is null or empty
+            mediaUrl = "";
+          }
+
+          console.log("View Entry Media URL:", mediaUrl);
+
           entriesGridHTML += `
    <div class="entryCard card border p-3 rounded mt-4 mx-auto w-75">
    <div class="d-flex justify-content-between align-items-center">
-     
+   ${
+     mediaUrl
+       ? `<img src="${mediaUrl}" alt="Entry media" class="mb-2 mt-2 w-100">`
+       : ""
+   }   
   <h3 class="fw-normal">${entryData.entryTitle}</h3>
   <!-- Link to view-entryDetail.html with index as query parameter -->
 
@@ -61,9 +82,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         } else {
           // index.html
           if (index < 3) {
-            const mediaUrl = entryData.entryMedia
-              ? `http://localhost/gitdiary/${entryData.entryMedia}`
-              : "";
+            let mediaUrl = "";
+
+            if (entryData.entryMedia) {
+              if (entryData.entryMedia.startsWith("http")) {
+                mediaUrl = entryData.entryMedia; //backend/uploads/filename.png.
+              } else {
+                mediaUrl = `http://localhost/gitdiary/${entryData.entryMedia}`; // http://localhost/gitdiary/backend/uploads/filename
+              }
+            } else {
+              mediaUrl = "";
+            }
             entriesGridHTML += `
         <div class="col-md-4 mb-3">
           <div class="entryCard card border p-3 rounded mt-4  ">
@@ -71,7 +100,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             mediaUrl
               ? `<img src="${mediaUrl}" alt="Entry media" class="mb-2 mt-2 w-100">`
               : ""
-          }    
+          }
+          
             <h3 class="fw-normal">${entryData.entryTitle}</h3>
             <span class="text-gray-500">${entryData.createdAt}</span>
             <p class="mt-3 text-gray-600">
