@@ -1,12 +1,36 @@
 document.addEventListener("DOMContentLoaded", () => {
   const submitEntryButton = document.querySelector(".jsButtonSubmitEntry");
+  const submitFilesButton = document.querySelector(".jsButtonSubmitFiles");
+  const fileInput = document.querySelector(
+    ".jsImageUserInput input[type='file']"
+  );
+  const dropzoneText = document.querySelector(".dropzone-text");
+  const dropzoneStatus = document.querySelector(".dropzone-status");
+
+  if (fileInput) {
+    fileInput.addEventListener("change", (file) => {
+      // if there is file selected, the dropzoneText ("Click or drag file to upload") will be hidden while dropzoneStatus ("File selected: filename") will be shown
+
+      if (file.target.files.length > 0) {
+        // domList means list of styles in the class. eg -> [mb-1, text-center]
+        dropzoneText.classList.add("d-none"); // add the class d-none to domList of dropzoneText
+        dropzoneStatus.classList.remove("d-none"); // remove the class d-none from domList of dropzoneStatus
+        dropzoneStatus.textContent = `File selected: ${e.target.files[0].name}`;
+      } else {
+        dropzoneText.classList.remove("d-none");
+        dropzoneStatus.classList.add("d-none");
+      }
+    });
+  }
 
   if (submitEntryButton) {
     submitEntryButton.addEventListener("click", async () => {
       const title = document.querySelector(".jsTitleUserInput").value;
       const content = document.querySelector(".jsContentUserInput").value;
       const date = document.querySelector(".jsDateUserInput").value;
-      const fileInput = document.querySelector(".jsImageUserInput").value;
+      const fileInput = document.querySelector(
+        ".jsImageUserInput input[type='file']"
+      );
 
       /*
       old JSON approach
@@ -19,18 +43,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
       console.log(entryData);
       */
-     
+
       if (!title || !content) {
         alert("Pls put title and content");
         return;
       }
-        
+
       const formData = new FormData();
       formData.append("title", title);
       formData.append("content", content);
       formData.append("date", date);
 
-      if (fileInput.files.length > 0) formData.append("media", fileInput.files[0]);
+      if (fileInput.files.length > 0)
+        formData.append("media", fileInput.files[0]);
 
       try {
         // Call the async function to submit the entry
@@ -68,7 +93,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
       window.location.href = "index.html";
     });
-   
   }
-   
 });

@@ -71,9 +71,9 @@
       <!-- File Upload Dropzone -->
       <div class="jsImageUserInput mb-3 w-50 mx-auto text-center">
         <label class="form-label d-block mb-2 fw-lighter"
-          >Attach Image (Optional)</label
-        >
+          >Attach Image (Optional)</label>
 
+          <!-- background box -->
         <div
           class="dropzone position-relative border rounded-2 p-4 d-flex flex-column align-items-center justify-content-center"
           style="cursor: pointer; background-color: #f8f8f8"
@@ -87,7 +87,9 @@
           />
 
           <!-- Text -->
-          <span class="text-muted">Click or drag file to upload</span>
+          <span class="text-muted dropzone-text">Click or drag file to upload</span>
+          <!-- d none means display none -->
+          <span class="text-success dropzone-status d-none"> Done!</span>
 
           <!-- Invisible file input over the dropzone -->
           <input

@@ -52,7 +52,7 @@ if (!$title || !$content){
             "message" => "Invalid file type"]);
             exit;
         }
-        
+        // validate file size (max 10MB)
          if ($_FILES['media']['size'] > 10 * 1024 * 1024) {
         http_response_code(400);
         echo json_encode(['success' => false, 'message' => 'File too large. Max 10MB.']);
