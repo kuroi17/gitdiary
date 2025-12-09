@@ -32,3 +32,9 @@
 .entry-buttons {
     margin-top: 1.5rem;
 }
+
+.logo-sm {
+  width: 40px;   /* adjust size as needed */
+  height: auto;  /* keeps proportions */
+  margin-right: 10px;
+}
