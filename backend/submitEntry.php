@@ -65,7 +65,9 @@ if (!$title || !$content){
 
         // this checks and moves the uploaded file to the destination
         if (move_uploaded_file($_FILES['media']['tmp_name'], $destination)){
-            $mediaPath = "backend/uploads/" . $fileName; // relative path to access the file
+            $mediaPath = "http://localhost/gitdiary/backend/uploads/" . $fileName;
+             // relative path to access the file
+            //C:\xampp\htdocs\gitdiary\backend\uploads
         } else {
             http_response_code(500);
             echo json_encode(["success" => false, 
