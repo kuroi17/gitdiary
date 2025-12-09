@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   const dropzoneText = document.querySelector(".dropzone-text");
   const dropzoneStatus = document.querySelector(".dropzone-status");
+  const uploadedStatusDone = document.querySelector(".uploadedStatusDone");
+  const uploadStatus = document.querySelector(".uploadStatus");
 
   if (fileInput) {
     fileInput.addEventListener("change", (file) => {
@@ -15,7 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
         // domList means list of styles in the class. eg -> [mb-1, text-center]
         dropzoneText.classList.add("d-none"); // add the class d-none to domList of dropzoneText
         dropzoneStatus.classList.remove("d-none"); // remove the class d-none from domList of dropzoneStatus
-        dropzoneStatus.textContent = `File selected: ${e.target.files[0].name}`;
+
+        uploadStatus.classList.add("d-none");
+        uploadedStatusDone.classList.remove("d-none");
+
+        dropzoneStatus.textContent = `File selected: ${file.target.files[0].name}`;
       } else {
         dropzoneText.classList.remove("d-none");
         dropzoneStatus.classList.add("d-none");
@@ -91,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("An error occurred while submitting the entry.");
       }
 
-      window.location.href = "index.html";
+      // window.location.href = "index.html";
     });
   }
 });
