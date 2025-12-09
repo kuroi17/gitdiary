@@ -6,8 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const title = document.querySelector(".jsTitleUserInput").value;
       const content = document.querySelector(".jsContentUserInput").value;
       const date = document.querySelector(".jsDateUserInput").value;
-      const image = document.querySelector(".jsImageUserInput").value;
+      const fileInput = document.querySelector(".jsImageUserInput").value;
 
+      /*
+      old JSON approach
       const entryData = {
         title: title,
         content: content,
@@ -16,11 +18,19 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       console.log(entryData);
-
+      */
+     
       if (!title || !content) {
         alert("Pls put title and content");
         return;
       }
+        
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("content", content);
+      formData.append("date", date);
+
+      if (fileInput.files.length > 0) formData.append("media", fileInput.files[0]);
 
       try {
         // Call the async function to submit the entry
@@ -29,10 +39,12 @@ document.addEventListener("DOMContentLoaded", () => {
           "http://localhost/gitdiary/backend/submitEntry.php",
           {
             method: "POST", // POST method is used to send data to the server
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(entryData),
+            // Don't set Content-Type header - browser will set it with boundary for FormData
+
+            // headers: {
+            //   "Content-Type": "application/json",
+            // },
+            body: formData,
           }
         );
 

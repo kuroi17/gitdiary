@@ -7,4 +7,6 @@ create table entries (
     entryTitle varchar(255) not null,
     entryContent text not null,
     createdAt timestamp default current_timestamp
+
+    -- ALTER TABLE entries ADD COLUMN entryMedia VARCHAR(255) NULL;
 )
