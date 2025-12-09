@@ -25,7 +25,23 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       let entryDetailsHTML = "";
       if (entryData) {
+        let mediaUrl = "";
+
+        if (entryData.entryMedia) {
+          if (entryData.entryMedia.startsWith("http")) {
+            mediaUrl = entryData.entryMedia; //backend/uploads/filename.png.
+          } else {
+            mediaUrl = `http://localhost/gitdiary/${entryData.entryMedia}`; // http://localhost/gitdiary/backend/uploads/filename
+          }
+        } else {
+          mediaUrl = "";
+        }
         entryDetailsHTML = `<article id="entryDetails" class="entry-card border rounded mb-4 mt-4">
+          ${
+            mediaUrl
+              ? `<img src="${mediaUrl}" alt="Entry media" class="mb-2 mt-2 w-100">`
+              : ""
+          }
         <h1 class="entry-title">${entryData.entryTitle}</h1>
     
         <span class="entry-date text-muted">${entryData.createdAt}</span>
