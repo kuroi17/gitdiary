@@ -19,12 +19,16 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 
 require "database.php"; // include DB connection
 
+// Set timezone to Philippine Time
+date_default_timezone_set('Asia/Manila');
 
 
 // Get form data
 $title = $_POST["title"] ?? null;
 $content = $_POST["content"] ?? null;
-$date = $_POST["date"] ?? date('Y-m-d H:i:s', time());
+$userDateSubmitted = $_POST["date"] ?? date('Y-m-d');
+// combine date with time auto
+$date = $userDateSubmitted . " " . date('H:i:s');
 
 if (!$title || !$content){
     http_response_code(400);

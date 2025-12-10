@@ -89,6 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (result.success) {
           alert("Entry submitted successfully!");
+          window.location.reload();
         } else {
           alert("Failed to submit entry: " + result.message);
         }
