@@ -56,34 +56,32 @@ document.addEventListener("DOMContentLoaded", async () => {
 
           console.log("View Entry Media URL:", mediaUrl);
 
+          // Horizontal layout - image left, text wraps right
           entriesGridHTML += `
    <div class="entryCard card border p-3 rounded mt-4 mx-auto w-75">
-   <div class="d-flex justify-content-between align-items-center">
-   ${
-     mediaUrl
-       ? `<img src="${mediaUrl}" alt="Entry media" class="mb-2 mt-2 w-100">`
-       : ""
-   }   
-  <h3 class="fw-normal">${entryData.entryTitle}</h3>
-  <!-- Link to view-entryDetail.html with index as query parameter -->
-
-        <a href="view-entryDetail.html?index=${
-          entryData.entryNumber
-        }" class="readmoreLink text-end text-decoration-none" >
-              Read more &rightarrow;
-        </a>
-        </div>
-        <span class="fw-normal text-muted">${entryData.createdAt}</span>
-        <p class="text-secondary mt-3 text-gray-600">
-          ${entryData.entryContent.substring(0, 100)}...
-        </p>
-      </div>
+     ${
+       mediaUrl
+         ? `<img src="${mediaUrl}" alt="Entry media" class="entry-preview">`
+         : ""
+     }
+     <div class="entry-text-wrapper">
+       <h3 class="fw-normal">${entryData.entryTitle}</h3>
+       <span class="fw-normal text-muted d-block mb-2">${entryData.createdAt}</span>
+       <p class="text-secondary text-gray-600">
+         ${entryData.entryContent.substring(0, 150)}...
+       </p>
+       <a href="view-entryDetail.html?index=${
+         entryData.entryNumber
+       }" class="readmoreLink text-decoration-none">
+         Read more &rightarrow;
+       </a>
+     </div>
+   </div>
 `;
         } else {
-          // index.html
+          // index.html - Vertical layout
           if (index < 3) {
             let mediaUrl = "";
-
             if (entryData.entryMedia) {
               if (entryData.entryMedia.startsWith("http")) {
                 mediaUrl = entryData.entryMedia; //backend/uploads/filename.png.
@@ -93,22 +91,22 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
               mediaUrl = "";
             }
+            console.log("View Entry Media URL:", mediaUrl);
             entriesGridHTML += `
         <div class="col-md-4 mb-3">
-          <div class="entryCard card border p-3 rounded mt-4  ">
+          <div class="card border p-3 rounded mt-4">
           ${
             mediaUrl
-              ? `<img src="${mediaUrl}" alt="Entry media" class="mb-2 mt-2 w-100">`
+              ? `<img src="${mediaUrl}" alt="Entry media" class="entry-thumb">`
               : ""
           }
-          
-            <h3 class="fw-normal">${entryData.entryTitle}</h3>
+            <h3 class="fw-normal mt-2">${entryData.entryTitle}</h3>
             <span class="text-gray-500">${entryData.createdAt}</span>
             <p class="mt-3 text-gray-600">
               ${entryData.entryContent.substring(0, 100)}...
             </p>  
           </div>
-          </div>
+        </div>
         `;
           }
         }
