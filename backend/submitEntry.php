@@ -24,6 +24,7 @@ date_default_timezone_set('Asia/Manila');
 
 
 // Get form data
+// POST means sending data
 $title = $_POST["title"] ?? null;
 $content = $_POST["content"] ?? null;
 $userDateSubmitted = $_POST["date"] ?? date('Y-m-d');
@@ -43,9 +44,11 @@ if (!$title || !$content){
         
         // create upload directory if not exists
         if (!is_dir($uploadDirectory)){
+            // create directory
             mkdir($uploadDirectory, 0755, true);
         }
 
+        // get file extension
         $fileExtension = pathinfo($_FILES['media']['name'], PATHINFO_EXTENSION);
         $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'mov', 'avi'];
 
@@ -84,6 +87,7 @@ if (!$title || !$content){
 $stmt = $conn->prepare("INSERT INTO entries (entryTitle, entryContent, createdAt, entryMedia) VALUES (?, ?, ?, ?)");
 $stmt->bind_param("ssss", $title, $content, $date, $mediaPath);
 
+// if true, execute
 if ($stmt->execute()) {
     echo json_encode([
         "success" => true,

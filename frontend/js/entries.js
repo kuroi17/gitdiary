@@ -66,7 +66,9 @@ document.addEventListener("DOMContentLoaded", async () => {
      }
      <div class="entry-text-wrapper">
        <h3 class="fw-normal">${entryData.entryTitle}</h3>
-       <span class="fw-normal text-muted d-block mb-2">${entryData.createdAt}</span>
+       <span class="fw-normal text-muted d-block mb-2">${
+         entryData.createdAt
+       }</span>
        <p class="text-secondary text-gray-600">
          ${entryData.entryContent.substring(0, 150)}...
        </p>
@@ -116,6 +118,43 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     renderEntries(entries);
+
+    const truncateButton = document.querySelector(".removeAllRowsValues");
+    if (truncateButton) {
+      truncateButton.addEventListener("click", async () => {
+        const confirmDeleteButton = confirm(
+          "Are you sure you want to delete all Entries?"
+        );
+
+        if (confirmDeleteButton) {
+          try {
+            const response = await fetch(
+              "http://localhost/gitdiary/backend/truncateRows.php",
+              {
+                method: "POST",
+                header: {
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+
+            const result = await response.json();
+
+            if (result.success) {
+              alert(result.message);
+              console.log("All entries deleted");
+              window.location.reload();
+            } else {
+              alert("Error " + result.message);
+            }
+          } catch (error) {
+            alert("Error deleting entries" + error.message);
+          }
+        }
+      });
+    }
+
+    // search functionality only on view-entry.html
 
     if (isViewEntryPage) {
       const searchEntry = document.getElementById("jsEntryInputSearch");
