@@ -41,16 +41,16 @@ document.addEventListener("DOMContentLoaded", async () => {
           
           entryDetailsHTML = `
           <article class="entry-card border rounded p-4">
-            <div class="entry-detail-wrapper">
+            <div class="entry-detail-wrapper text-break">
               ${
                 mediaUrl
-                  ? `<img src="${mediaUrl}" alt="${entryData.entryTitle}" class="entry-full">`
+                  ? `<img src="${mediaUrl}" alt="${entryData.entryTitle}" class="entry-full img-fluid">`
                   : ""
               }
               <div class="entry-text-wrapper">
-                <h1 class="entry-title">${entryData.entryTitle}</h1>
+                <h1 class="entry-title text-break">${entryData.entryTitle}</h1>
                 <span class="entry-date text-muted">${entryData.createdAt}</span>
-                <p class="entry-text">
+                <p class="entry-text text-break">
                   ${entryData.entryContent}
                 </p>
                 <div class="entry-buttons">

@@ -65,11 +65,11 @@ document.addEventListener("DOMContentLoaded", async () => {
          : ""
      }
      <div class="entry-text-wrapper">
-       <h3 class="fw-normal">${entryData.entryTitle.substring(0, 10)}...</h3>
+       <h3 class="fw-normal text-break">${entryData.entryTitle.substring(0, 10)}...</h3>
        <span class="fw-normal text-muted d-block mb-2">${
          entryData.createdAt
        }</span>
-       <p class="text-secondary text-gray-600">
+       <p class="text-secondary text-gray-600 text-break">
          ${entryData.entryContent.substring(0, 150)}...
        </p>
        <a href="view-entryDetail.html?index=${

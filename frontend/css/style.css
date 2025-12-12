@@ -1,44 +1,40 @@
 /* view-EntryDetail */
 .entry-card {
-    height: 400px;               
-    padding: 2rem;        
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  min-height: 400px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-
 
 .entry-title {
-    font-size: 2.3rem;
-    font-weight: 300;
-    margin-bottom: 0.3rem;
+  font-size: 2.3rem;
+  font-weight: 300;
+  margin-bottom: 0.3rem;
 }
-
 
 .entry-date {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    display: block;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  display: block;
 }
 
-
 .entry-text {
-    font-size: 1.15rem;
-    line-height: 1.6;
-    flex-grow: 1;      /* makes the body expand and center nicely */
+  font-size: 1.15rem;
+  line-height: 1.6;
+  flex-grow: 1; /* makes the body expand and center nicely */
 }
 
 /* Buttons container */
 .entry-buttons {
-    margin-top: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .logo-sm {
-  width: 40px;   /* adjust size as needed */
-  height: auto;  /* keeps proportions */
+  width: 40px; /* adjust size as needed */
+  height: auto; /* keeps proportions */
   margin-right: 10px;
 }
-
 
 /* =========================================
    INDEX.HTML — VERTICAL ENTRIES
@@ -51,7 +47,6 @@
   margin-bottom: 1rem;
 }
 
-
 /* =========================================
    VIEW-ENTRY.HTML — HORIZONTAL PREVIEW
    (image left, text wraps on the right)
@@ -61,7 +56,7 @@
   height: 180px;
   object-fit: cover;
   border-radius: 8px;
-  flex-shrink: 0;      /* prevents image shrinking */
+  flex-shrink: 0; /* prevents image shrinking */
 }
 
 .entryCard {
@@ -75,13 +70,12 @@
   flex: 1; /* makes the text area expand */
 }
 
-
 /* =========================================
    VIEW-ENTRY-DETAIL.HTML — HORIZONTAL FULL ENTRY
    ========================================= */
 .entry-card {
-    padding: 2rem;        
-    min-height: 400px; /* changed from fixed height */
+  padding: 2rem;
+  min-height: 400px; /* changed from fixed height */
 }
 
 .entry-detail-wrapper {
@@ -117,3 +111,8 @@
   }
 }
 
+.entry-detail-wrapper,
+.entry-text-wrapper {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
