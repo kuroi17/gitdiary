@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", async () => {
          : ""
      }
      <div class="entry-text-wrapper">
-       <h3 class="fw-normal">${entryData.entryTitle}</h3>
+       <h3 class="fw-normal">${entryData.entryTitle.substring(0, 10)}...</h3>
        <span class="fw-normal text-muted d-block mb-2">${
          entryData.createdAt
        }</span>
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               ? `<img src="${mediaUrl}" alt="Entry media" class="entry-thumb">`
               : ""
           }
-            <h3 class="fw-normal mt-2">${entryData.entryTitle}</h3>
+            <h3 class="fw-normal mt-2">${entryData.entryTitle.substring(0, 10)}...</h3>
             <span class="text-gray-500">${entryData.createdAt}</span>
             <p class="mt-3 text-gray-600">
               ${entryData.entryContent.substring(0, 100)}...

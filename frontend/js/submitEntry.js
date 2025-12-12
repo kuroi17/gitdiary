@@ -89,6 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (result.success) {
           alert("Entry submitted successfully!");
+          console.log("Entry submitted:" + title + ", " + date);
           window.location.reload();
         } else {
           alert("Failed to submit entry: " + result.message);
@@ -98,6 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("An error occurred while submitting the entry.");
       }
 
+      
       // window.location.href = "index.html";
     });
   }
