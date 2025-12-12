@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     try {
       const response = await fetch(
-        "http://localhost/gitdiary/backend/getEntryandShow.php"
+        "/backend/getEntryandShow.php"
       );
 
       if (!response.ok) {
@@ -45,7 +45,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (entryData.entryMedia.startsWith("http")) {
               mediaUrl = entryData.entryMedia; //backend/uploads/filename.png.
             } else {
-              mediaUrl = `http://localhost/gitdiary/${entryData.entryMedia}
+              //https://zany-chainsaw-979qw6xj947gh7qxp-5503.app.github.dev/
+              mediaUrl = `https://zany-chainsaw-979qw6xj947gh7qxp-5503.app.github.dev/${entryData.entryMedia}
               `;
               //http://localhost/gitdiary/backend/uploads/filename
             }
@@ -88,7 +89,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               if (entryData.entryMedia.startsWith("http")) {
                 mediaUrl = entryData.entryMedia; //backend/uploads/filename.png.
               } else {
-                mediaUrl = `http://localhost/gitdiary/${entryData.entryMedia}`; // http://localhost/gitdiary/backend/uploads/filename
+                mediaUrl = `https://zany-chainsaw-979qw6xj947gh7qxp-5503.app.github.dev/${entryData.entryMedia}`; // http://localhost/gitdiary/backend/uploads/filename
               }
             } else {
               mediaUrl = "";
@@ -129,7 +130,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (confirmDeleteButton) {
           try {
             const response = await fetch(
-              "http://localhost/gitdiary/backend/truncateRows.php",
+              "/backend/truncateRows.php",
               {
                 method: "POST",
                 header: {

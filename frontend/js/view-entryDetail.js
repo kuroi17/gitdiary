@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         let entryData;
         try {
           const response = await fetch(
-            `http://localhost/gitdiary/backend/getEntryandShow.php?id=${entryIndex}`
+            `/backend/getEntryandShow.php?id=${entryIndex}`
           );
 
           if (!response.ok) {
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (entryData.entryMedia.startsWith("http")) {
               mediaUrl = entryData.entryMedia; //backend/uploads/filename.png.
             } else {
-              mediaUrl = `http://localhost/gitdiary/${entryData.entryMedia}`; // http://localhost/gitdiary/backend/uploads/filename
+              mediaUrl = `/${entryData.entryMedia}`; // http://localhost/gitdiary/backend/uploads/filename
             }
           } else {
             mediaUrl = "";
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 };
                 try {
                   const result = await fetch(
-                    "http://localhost/gitdiary/backend/updateandDelete.php",
+                    "/backend/updateandDelete.php",
                     {
                       method: "POST",
                       headers: {
@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               if (confirmDelete) {
                 try {
                   const result = await fetch(
-                    "http://localhost/gitdiary/backend/updateandDelete.php",
+                    "/backend/updateandDelete.php",
                     {
                       method: "POST",
                       headers: {

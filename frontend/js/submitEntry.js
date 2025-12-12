@@ -66,8 +66,9 @@ document.addEventListener("DOMContentLoaded", () => {
       try {
         // Call the async function to submit the entry
         // use relative path since we're on same server
+        //https://zany-chainsaw-979qw6xj947gh7qxp-5503.app.github.dev/backend/
         const response = await fetch(
-          "http://localhost/gitdiary/backend/submitEntry.php",
+          "https://zany-chainsaw-979qw6xj947gh7qxp-5503.app.github.dev/backend/submitEntry.php",
           {
             method: "POST", // POST method is used to send data to the server
             // Don't set Content-Type header - browser will set it with boundary for FormData

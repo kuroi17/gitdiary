@@ -72,7 +72,7 @@ if (!$title || !$content){
 
         // this checks and moves the uploaded file to the destination
         if (move_uploaded_file($_FILES['media']['tmp_name'], $destination)){
-            $mediaPath = "http://localhost/gitdiary/backend/uploads/" . $fileName;
+            $mediaPath = "https://zany-chainsaw-979qw6xj947gh7qxp-5503.app.github.dev/backend/uploads/" . $fileName;
              // relative path to access the file
             //C:\xampp\htdocs\gitdiary\backend\uploads
         } else {
