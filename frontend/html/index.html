@@ -3,21 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>GitDiary</title>
+
+    <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+
     <!-- Your Custom CSS -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
+
   <body>
-    <header class="headerDiary white-primary text-black p-1 mt-3 mb-5">
+    <header class="headerDiary white-primary text-black p-1 mt-3">
       <!-- black bg black text padding 3 -->
       <div class="container d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center">
           <img
-            src="images/diary-svgrepo-com (7).svg"
+            src="../images/diary-svgrepo-com (7).svg"
             alt="Logo"
             class="logo-sm"
           />
@@ -32,35 +36,39 @@
         </nav>
       </div>
     </header>
-    <div class="ViewEntryBody border rounded w-75 mx-auto p-4">
-      <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="text-start fw-light mb-4 p-0">Your Entries</h1>
+
+    <main class="container my-5 text-center">
+      <div class="pb-4 p-5 mb-5 border">
+        <h1 class="mb-3 fw-semibold fs-1">How is your day going?</h1>
+        <p class="text-gray-600 fs-5">
+          Write your thoughts. Track your growth. Reflect anytime
+        </p>
         <button
-          class="removeAllRowsValues text-end bg-primary text-white p-2 border-0 rounded"
+          class="newEntriesBtn bg-primary text-white p-2 border-0 rounded"
+          href="new-entry.html"
         >
-          Remove All Entries
+          Write a New Entry
         </button>
       </div>
-
-      <div class="border rounded-1">
-        <input
-          type="text"
-          placeholder="Find entries"
-          class="border rounded-2 p-2 w-100"
-          id="jsEntryInputSearch"
-        />
+      <div class="d-flex justify-content-between mb-4 align-items-center">
+        <h1 class="fw-light m-0">Recent Entries</h1>
+        <a href="view-entry.html" class="text-decoration-none"
+          >View All Entries &rightarrow;
+        </a>
       </div>
-    </div>
-    <div class="entriesContainer mb-5">
-      <div id="entries-grid" class="row"></div>
-      <!-- entries is replaced by js dynamic literal string-->
-    </div>
 
+      <div class="entriesContainer">
+        <div id="entries-grid" class="row"></div>
+
+        <!-- entries is replaced by dynamic string literal-->
+      </div>
+    </main>
+
+    <!-- Bootstrap JS Bundle (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Your Custom JS -->
-    <script src="js/app.js"></script>
-    <script src="js/entries.js"></script>
-    <script src="js/view-entryDetail.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/entries.js"></script>
   </body>
 </html>
