@@ -116,3 +116,16 @@
   min-width: 0;
   overflow-wrap: anywhere;
 }
+
+/* 
+.card {
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card p {
+  flex-grow: 1;           /* fills remaining space 
+  overflow: hidden;
+} 
+*/

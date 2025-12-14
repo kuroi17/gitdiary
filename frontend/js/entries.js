@@ -65,7 +65,10 @@ document.addEventListener("DOMContentLoaded", async () => {
          : ""
      }
      <div class="entry-text-wrapper">
-       <h3 class="fw-normal text-break">${entryData.entryTitle.substring(0, 10)}...</h3>
+       <h3 class="fw-normal text-break">${entryData.entryTitle.substring(
+         0,
+         10
+       )}...</h3>
        <span class="fw-normal text-muted d-block mb-2">${
          entryData.createdAt
        }</span>
@@ -96,15 +99,18 @@ document.addEventListener("DOMContentLoaded", async () => {
             console.log("View Entry Media URL:", mediaUrl);
             entriesGridHTML += `
         <div class="col-md-4 mb-3">
-          <div class="card border p-3 rounded mt-4">
+          <div class="card border p-3 rounded mt-4 h-100 d-flex flex-column">
           ${
             mediaUrl
               ? `<img src="${mediaUrl}" alt="Entry media" class="entry-thumb">`
               : ""
           }
-            <h3 class="fw-normal mt-2">${entryData.entryTitle.substring(0, 10)}...</h3>
+            <h3 class="fw-normal mt-2">${entryData.entryTitle.substring(
+              0,
+              10
+            )}...</h3>
             <span class="text-gray-500">${entryData.createdAt}</span>
-            <p class="mt-3 text-gray-600">
+            <p class="mt-3 text-gray-600 flex-grow-1">
               ${entryData.entryContent.substring(0, 100)}...
             </p>  
           </div>
