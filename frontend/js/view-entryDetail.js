@@ -125,6 +125,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                   );
                   const response = await result.json();
                   alert(response.message);
+                   window.location.href = "view-entry.html";
                 } catch (error) {
                   alert("Error updating entry: " + error.message);
                   return;

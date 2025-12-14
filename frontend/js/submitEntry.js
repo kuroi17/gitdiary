@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       /*
       old JSON approach
-      const entryData = {
+      const entryData = 
         title: title,
         content: content,
         date: date,
@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
+      // Using FormData to handle file uploads
       const formData = new FormData();
       formData.append("title", title);
       formData.append("content", content);

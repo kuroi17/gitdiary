@@ -83,12 +83,14 @@ if (!$title || !$content){
         }
 }
 
-// Insert entry into database
-$stmt = $conn->prepare("INSERT INTO entries (entryTitle, entryContent, createdAt, entryMedia) VALUES (?, ?, ?, ?)");
+// Insert entry into database 
+$stmt = $conn->prepare("INSERT INTO entries (entryTitle, entryContent, createdAt, entryMedia) VALUES (?, ?, ?, ?)"); // use (?,?,?, ?) cuz it is about to insert values in each column
+// bind_param does the sanitization and escaping to prevent SQL injection
 $stmt->bind_param("ssss", $title, $content, $date, $mediaPath);
 
 // if true, execute
 if ($stmt->execute()) {
+    // json_encode means converting PHP array to JSON format again
     echo json_encode([
         "success" => true,
         "message" => "Entry saved.",
