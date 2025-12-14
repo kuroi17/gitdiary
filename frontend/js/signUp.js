@@ -38,7 +38,7 @@ signUpButton.addEventListener("click", async (e) => {
       body: JSON.stringify({
         username: userName.value.trim(),
         email: email.value.trim(),
-        password: password.value,
+        password: password.value.trim(),
       })
     });
 
