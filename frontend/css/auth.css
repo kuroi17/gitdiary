@@ -1,0 +1,37 @@
+body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .card {
+      border-radius: 1rem;
+      box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.1);
+    }
+
+    .btn-primary {
+      background-color: #000;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #333;
+    }
+
+    .btn-outline-dark {
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+    }
+
+    .form-control {
+      border-radius: 0.5rem;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      color: #333;
+    }
