@@ -44,7 +44,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
 
 // check if username or email already exists
-if ($stmt = $conn->prepare("SELECT id FROM users WHERE username = ? OR email = ?")) {
+if ($stmt = $conn->prepare("SELECT userID FROM users WHERE userName = ? OR email = ?")) {
     $stmt->bind_param("ss", $username, $email);
     $stmt->execute();
     $stmt->store_result();

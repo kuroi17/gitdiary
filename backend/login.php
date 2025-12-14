@@ -42,7 +42,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 // Fetch user by email
-if ($stmt = $conn->prepare("SELECT id, username, password FROM users WHERE email = ?")) {
+if ($stmt = $conn->prepare("SELECT userID, userName, password FROM users WHERE email = ?")) {
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();

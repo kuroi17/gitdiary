@@ -30,7 +30,7 @@ signUpButton.addEventListener("click", async (e) => {
   signUpButton.disabled = true;
   try {
     
-    const response = await fetch("../backend/signUp.php", {
+    const response = await fetch("http://localhost/gitdiary/backend/signUp.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

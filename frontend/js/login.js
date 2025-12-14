@@ -38,7 +38,7 @@ logInButton.addEventListener("click", async (e) => {
   logInButton.disabled = true;
 
   try {
-    const response = await fetch("../backend/login.php", {
+    const response = await fetch("http://localhost/gitdiary/backend/login.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password })
